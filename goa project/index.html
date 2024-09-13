@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link id="stylesheet" rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="suggest.css">
+    <link rel="stylesheet" href="currency.css">
+    <link rel="stylesheet" href="transaction.css"> -->
+</head>
+
+<body><!-- --------------------------------------BOT------------------------------------------------------------------- -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* body{
+            height: auto;
+            background-color: #a97ee1;
+            font-family: Work Sans;
+
+        } */
+
+        #person-user-name-div{
+            display: none;
+        }
+
+        #form-catcher{
+            width: 450px;
+            height: auto;
+            background-color: rgb(226, 226, 226);
+            padding: 50px;
+            display: none;
+            flex-direction: column;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 1111111;
+            right: 10%;
+            top: 180px;
+            transform: translateY(-1000px);
+            opacity: 0;
+            transition: 0.7s;
+        }
+        #form-catcher.display{
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #reg-form{
+            display: flex;
+            flex-direction: column;
+            text-align: end;
+
+        }
+        #log-form{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            background-color: white;
+            right: 18%;
+            width: 300px;
+            padding: 20px;
+            top: 180px;
+            z-index: 1111;
+            border-radius: 12px;
+            transform: translateY(-1500px);
+            opacity: 0;
+            transition: 0.7s;
+        }
+        #log-form.display1{
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .sign-in-label{
+            color: #18204B;
+            font-size: 20px;
+        }
+        .registration-txt{
+            font-size: 50px;
+            font-family: sans-serif;
+            text-align: end;
+            letter-spacing: 1.4px;
+            margin: 10px 0;
+            color: rgba(0, 0, 0, 0.824);
+        }
+        .input-boxs{
+            margin: 12px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        .input-boxs input{
+            height: 44px;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(90deg, #02050C 6%, #18204B 100%);
+            color: #FFFFFF;
+            letter-spacing: 1.4px;
+            text-align: end;
+            border-radius: 7px;
+            border: none;
+        }
+        .lika-label{
+            font-size: 19px;
+            margin: 7px 0;
+            color: #18204B;
+        }
+        #reg-finish, #log-finish{
+            height: 50px;
+            margin-top: 60px;
+            width: 200px;
+            font-size: 18px;
+            background: linear-gradient(90deg, #02050C 6%, #18204B 100%);
+            color: rgba(255, 255, 255, 0.598);            border-radius: 3px;
+            align-self: flex-end;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+        #reg-finish:hover{
+            background: rgba(255, 255, 255, 0.598);
+            border: 2px solid #18204B;
+            color: #18204B;
+        }
+
+        @media (max-width: 650px){
+            #form-catcher{
+                width: 300px;
+                right: 5%;
+                padding: 30px;
+            }
+            .registration-txt{
+            font-size: 30px;
+            font-family: sans-serif;
+            text-align: end;
+            letter-spacing: 1.4px;
+            margin: 10px 0;
+            color: rgba(0, 0, 0, 0.824);
+        }
+        #log-form{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            background-color: white;
+            right: 8%;
+            width: 300px;
+            padding: 20px;
+            top: 180px;
+            z-index: 1111;
+            border-radius: 12px;
+            transform: translateY(-1500px);
+            opacity: 0;
+            transition: 0.7s;
+        }
+        }
+    </style>
+
+    <div id="form-catcher">
+        
+        <form class="reg-form">
+            <h1 class="registration-txt">Registration</h1>
+            <div class="input-boxs">
+                <label class="lika-label" for="ID">ID Number</label>
+                <input type="text" name="" id="ID">
+                <i></i>
+            </div>
+            <div class="input-boxs">
+                <label class="lika-label" for="RegUserName">Name</label>
+                <input type="text" name="" id="RegUserName">
+                <i></i>
+            </div>
+            <div class="input-boxs">
+                <label class="lika-label" for="RegUserPass">Password</label>
+                <input type="password" name="" id="RegUserPass">
+                <i></i>
+            </div>
+        </form>
+
+        <button id="reg-finish">Finish</button>
+
+    </div>
+    <form id="log-form">
+        <h1>Authorization</h1>
+    
+        <div class="input-boxs">
+            <label class="sign-in-label" for="LogUserName">Name</label>
+            <input type="text" name="" id="LogUserName">
+        </div>
+        <div class="input-boxs">
+            <label class="sign-in-label" for="LogUserPass">Password</label>
+            <input type="password" name="" id="LogUserPass">
+        </div>
+        <button id="log-finish">Enter</button>
+    </form> 
+
+
+
+
+
+    <header>
+        <nav>
+          <p class="logo">MLL Bank</p>
+          <div class="hrefs-div">
+            <div id="hrefs-display">
+                <a id="suggest-page-href" class="hrefs" href="#">Suggest</a>
+                <a id="transaction-page-href" class="hrefs" href="#">Transactions</a>
+                <a id="home-page-href" class="hrefs" href="#">Home</a>
+                <a id="profile-page-href" class="hrefs" href="#">Person</a>
+            </div>
+            <img id="lika-menu" src="../lika-menu.png" alt="">
+        </div>
+          <div class="profile-sign-in-up-div">
+            <div class="profile-icon-header-div">
+              <img class="profile-icon-header-img" src="../man.png" alt="">
+            </div>
+            <div class="sign-div">
+              <a id="sign-in" href="#">Sign In</a>
+              <a id="sign-up" href="#">Sign Up</a>
+            </div>
+            <div id="person-user-name-div">
+                <p id="person-username"></p>
+                <p id="log-out">Log out</p>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+   <div id="home-page">
+    <section id="silverPhone" class="silver-background">
+    
+        <div class="interface">
+    
+    
+            <div id="calculator">
+                <input id="display" readonly>
+    
+                <br>
+                <br>
+    
+                <div class="icons">
+                    <div id="clock-div"><input  type="text" id="clock" readonly></div>
+                    <svg class="wifi" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M1.33309 8.07433C0.92156 8.44266 0.886539 9.07485 1.25487 9.48638C1.62319 9.89791 2.25539 9.93293 2.66691 9.5646L1.33309 8.07433ZM21.3331 9.5646C21.7446 9.93293 22.3768 9.89791 22.7451 9.48638C23.1135 9.07485 23.0784 8.44266 22.6669 8.07433L21.3331 9.5646ZM12 19C11.4477 19 11 19.4477 11 20C11 20.5523 11.4477 21 12 21V19ZM12.01 21C12.5623 21 13.01 20.5523 13.01 20C13.01 19.4477 12.5623 19 12.01 19V21ZM14.6905 17.04C15.099 17.4116 15.7315 17.3817 16.1031 16.9732C16.4748 16.5646 16.4448 15.9322 16.0363 15.5605L14.6905 17.04ZM18.0539 13.3403C18.4624 13.7119 19.0949 13.682 19.4665 13.2734C19.8381 12.8649 19.8082 12.2324 19.3997 11.8608L18.0539 13.3403ZM7.96372 15.5605C7.55517 15.9322 7.52524 16.5646 7.89687 16.9732C8.2685 17.3817 8.90095 17.4116 9.3095 17.04L7.96372 15.5605ZM4.60034 11.8608C4.19179 12.2324 4.16185 12.8649 4.53348 13.2734C4.90511 13.682 5.53756 13.7119 5.94611 13.3403L4.60034 11.8608ZM2.66691 9.5646C5.14444 7.34716 8.41371 6 12 6V4C7.90275 4 4.16312 5.54138 1.33309 8.07433L2.66691 9.5646ZM12 6C15.5863 6 18.8556 7.34716 21.3331 9.5646L22.6669 8.07433C19.8369 5.54138 16.0972 4 12 4V6ZM12 21H12.01V19H12V21ZM12 16C13.0367 16 13.9793 16.3931 14.6905 17.04L16.0363 15.5605C14.9713 14.5918 13.5536 14 12 14V16ZM12 11C14.3319 11 16.4546 11.8855 18.0539 13.3403L19.3997 11.8608C17.4466 10.0842 14.8487 9 12 9V11ZM9.3095 17.04C10.0207 16.3931 10.9633 16 12 16V14C10.4464 14 9.02872 14.5918 7.96372 15.5605L9.3095 17.04ZM5.94611 13.3403C7.54544 11.8855 9.66815 11 12 11V9C9.15127 9 6.55344 10.0842 4.60034 11.8608L5.94611 13.3403Z"
+                                fill="#fff"></path>
+                        </g>
+                    </svg>
+                    <svg class="battery" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M3.75 6.75L3 7.5V16.5L3.75 17.25H18.75L19.5 16.5V14.25H21V9.75H19.5V7.5L18.75 6.75H3.75ZM18 9.75V8.25H4.5V15.75H18V14.25V9.75Z"
+                                fill="#fff"></path>
+                        </g>
+                    </svg>
+                    <svg class="connection" viewBox="0 0 76 76" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full"
+                        enable-background="new 0 0 76.00 76.00" xml:space="preserve" fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path fill="#fff" fill-opacity="1" stroke-width="0.2" stroke-linejoin="round"
+                                d="M 41,35L 41,57L 35,57L 35,35L 41,35 Z M 33,44L 33,57L 27,57L 27,44L 33,44 Z M 19,57L 19,51L 25,51L 25,57L 19,57 Z M 57,19L 57,57L 51,57L 51,19L 57,19 Z M 49,27L 49,57L 43,57L 43,27L 49,27 Z ">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+    
+    
+                <div class="chatbot">
+                    <div class="chat-container">
+                        <div id="chat-box" class="chat-box">
+    
+                        </div>
+                        <div class="input-container">
+                            <input type="text" id="user-input" placeholder="Send a messsage..." autocomplete="off">
+                            <button id="send-btn">SEND</button>
+                        </div>
+                    </div>
+                </div>
+    
+    
+            </div>
+    
+        </div>
+    
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- --------------------------------------------------------------------------------------------------------- -->
+    <div onclick="updateClock()" id="ON/OFF" class="bot-div">
+        <!-- <img src="https://cdn.vectorstock.com/i/1000v/16/99/bot-icon-chatbot-concept-vector-26621699.jpg" alt=""> -->
+    </div>
+    <section class="main-section">
+
+        <section class="firstSection">
+            <div class="firstSectionMainDiv">
+                <div class="firstSectionMainDivChild">
+                    <div class="firstSectionText">
+                        <h1>THE PROMOTION FOR REMITTANCES HAS STARTED!</h1>
+                        <p>Receive 500 and 5,000 GEL As a Gift</p>
+                        <button>See more</button>
+                    </div>
+                    <div class="firstSectionDiv">
+                        <img class="firstSectionDivImg" src="./images/beboreplace.jpg" alt="black-girl">
+                    </div>
+                </div>
+
+                <div class="firstSectionMainDivChild">
+                    <div class="firstSectionText">
+                        <h1>LOANS FOR USED CARS</h1>
+                        <p>Secure a loan for the amount you need to buy a used car and handle the registration at our branch</p>
+                        <button>See more</button>
+                    </div>
+                    <div class="firstSectionDiv">
+                        <img class="firstSectionDivImg" src="./images/carblue.jpg" alt="black-girl">
+                    </div>
+                </div>
+
+                <div class="firstSectionMainDivChild">
+                    <div class="firstSectionText">
+                        <h1>CAR SPACE
+                            IN MOBILE BANK</h1>
+                        <p>Add you car to the car space and manage related issues more easily</p>
+                        <button>See more</button>
+                    </div>
+                    <div class="firstSectionDiv">
+                        <img class="firstSectionDivImg" src="./images/girlstreet.jpg" alt="black-girl">
+                    </div>
+                </div>
+
+                <div class="firstSectionLastDiv">
+                    <div id="anim" class="firstSectionLastDivButton">
+                        <div>
+                            <button id="first"></button>
+                            <button id="second"></button>
+                            <button id="third"></button>
+                        </div>
+                        <div class="arrow-triple-button-div">
+                            <button id="prev" onclick="prevSlide()" class="left-arrow-button">&#8592</button>
+                            <button id="next" onclick="nextSlide()" class="right-arrow-button">&#8594</button>
+                        </div>
+                    </div>
+                    <div class="firstSectionLastDivSwitch">
+                        <!-- <button><img src="/images/left-arrow.png" alt=""></button>
+                        <button><img src="/images/right-arrow.png" alt=""></button> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide-cards-section">
+            <div class="my-wrap">
+              <div class="item item1"><img class="card-img" src="/cards/card1.png" alt=""></div>
+              <div class="item item2"><img class="card-img" src="/cards/card2.png" alt=""></div>
+              <div class="item item3"><img class="card-img" src="/cards/card3.png" alt=""></div>
+              <div class="item item4"><img class="card-img" src="/cards/card4.png" alt=""></div>
+              <div class="item item5"><img class="card-img" src="/cards/card5.png" alt=""></div>
+              <div class="item item6"><img class="card-img" src="/cards/card6.png" alt=""></div>
+            </div>
+        </section>
+
+
+        <section class="v">
+            <div class="secondSectionMainTitle"><h1>EXPLORE BANKING PRODUCTS</h1></div>
+            <div class="secondSection">
+                <div class="box a">
+                    <div class="box-text-div">
+                        <h2 class="mortage-loan">MORTGAGE LOAN</h2>
+                        <h4>Get a loan to buy or renovate real estate</h4>
+                        <p>See more</p>
+                    </div>
+                    <div class="furniture1-div">
+                        <img class="furniture1-img" src="./images/furniture1.jpg" alt="">
+                    </div>
+                </div>
+            <div class="box b">
+                <div class="box-text-div">
+                    <h2>CONSUMER LOAN</h2>
+                    <h4>You can take out mortgage loan for different purposes</h4>
+                    <p>See more</p>
+                </div>
+                <div class="consumer-loan-div">
+                    <div class="loan-icon-limit-div">
+                        <img class="loan-man-icon" src="/images/loan.png" alt="">
+                        <div class="loan-limit-div">
+                            <p class="loan-limit-txt">Check your loan limit</p>
+                            <p class="loan-limit-num">Max 75 000 GEL</p>
+                        </div>
+                    </div>
+                    <!-- <img class="consumer-loan-img" src="./images/consumer-loan.jpg" alt=""> -->
+
+                </div>
+            </div>
+            <div class="box c">
+                <div class="box-text-div">
+                    <h2>BANKING SET</h2>
+                    <h4>Get the products services you need for free</h4>
+                    <p>See more</p>
+                </div>
+            </div>
+            <div class="box d">
+                <div class="box-text-div">
+                    <h2>DEPOSIT</h2>
+                    <h4>Save or collect money and get benefits</h4>
+                    <p>See more</p>
+                </div>
+            </div>
+            <div class="box e">
+                <div class="box-text-div">
+                    <h2>DEBIT CARDS</h2>
+                    <h4>Select the card that suit your needs</h4>
+                    <p>See more</p>
+                </div>
+            </div>
+            <div class="box f">
+                <div class="box-text-div">
+                    <h2>CREDIT CARDS</h2>
+                    <h4>Apply for American Express cards with credit limits</h4>
+                    <p>See more</p>
+                </div>
+                <div class="credit-cards-div">
+                    <img class="credit-card-img" src="./images/credit-card.png" alt="">
+                </div>
+            </div>
+        </div>
+        </section>
+        
+
+
+
+
+    <!----------------------------------------------------------- exange section------------------------------------------------------ -->
+
+
+        <section class="exchangeValues">
+            <div class="exchangeValuesMainDiv">
+                <div class="exchangeValuesMainDiv">
+                        <div><h1>EXCHANGE MONEY</h1></div>
+                        <div class="exchangeValuesCalc">
+                            <div>
+                            <h4 class="convert-money">Convert money in Mobile / Internet Bank at a better rate</h4>
+                            </div>
+                            <div>
+                            <button>CALCULATE</button>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="calculator-cards">
+                    <div class="calculator-card">
+                        <div class="calculator-card-info">
+                            <div><img width="50px" src="/images/usa.png" alt=""></div>
+                            <div class="gap-currency">
+                                <div class="gap-currency">
+                                    <h3>USD</h3>
+                                    <p>Official Rate</p>
+                                </div>
+                                <div class="currency-value">
+                                    <h3>2.6935</h3>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="exchange-value">
+                            <div></div>
+                            <div>Buy</div>
+                            <div>Sell</div>
+                            <div>mBank:</div>
+                            <div class="boldValues">2.6600</div>
+                            <div class="boldValues">2.7200</div>
+                            <div>Branch:</div>
+                            <div class="boldValues">2.6400</div>
+                            <div class="boldValues">2.7400</div>
+                        </div>
+                    </div>
+
+                    <div class="calculator-card">
+                        <div class="calculator-card-info">
+                            <div><img width="50px" src="/images/euro.png" alt=""></div>
+                            <div class="gap-currency" >
+                                <div class="gap-currency">
+                                    <h3>EUR</h3>
+                                    <p>Official Rate</p>
+                                </div>
+                                <div class="currency-value">
+                                    <h3>2.9752</h3>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    
+                        <div class="exchange-value">
+                            <div></div>
+                            <div>Buy</div>
+                            <div>Sell</div>
+                            <div>mBank:</div>
+                            <div class="boldValues">2.6600</div>
+                            <div class="boldValues">2.7200</div>
+                            <div>Branch:</div>
+                            <div class="boldValues">2.6400</div>
+                            <div class="boldValues">2.7400</div>
+                        </div>
+                    </div>
+
+                    <div class="calculator-card">
+                        <div class="calculator-card-info">
+                            <div><img width="50px" src="/images/uk.png" alt=""></div>
+                            <div class="gap-currency">
+                                <div class="gap-currency">
+                                    <h3>GPB</h3>
+                                    <p>Official Rate</p>
+                                </div>
+                                <div class="currency-value">
+                                    <h3>2.6935</h3>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    
+                        <div class="exchange-value">
+                            <div></div>
+                            <div>Buy</div>
+                            <div>Sell</div>
+                            <div>mBank:</div>
+                            <div class="boldValues">2.6600</div>
+                            <div class="boldValues">2.7200</div>
+                            <div>Branch:</div>
+                            <div class="boldValues">2.6400</div>
+                            <div class="boldValues">2.7400</div>
+                        </div>
+                    </div>
+            </div>
+        </section>
+
+
+
+
+<section class="calculation-calculator">
+    <div class="calculation-calculator-div">
+        <div class="calculation-calculator-first">
+            <h1>CALCULATE</h1>
+        </div>
+
+        <div class="calculation-calculator-sesxi">
+            <button>LOAN</button>
+            <button>DEPOSIT</button>
+            <button>REMITTANCE</button>
+        </div>
+
+        <div class="rowCalc">
+            <div class="Maincalculator">
+                <div class="typeOfSesxi">
+                    <div>
+                        <p>What kind of a loan do you need?</p>
+                    </div>
+                    <div class="typeOfSesxiDt">
+                        <button id="mortage" class="type-of-loan-btn">Mortage</button>
+                        <button id="consumer" class="type-of-loan-btn">Consumer</button>
+                    </div>
+                    <div class="money">
+                        <div>
+                            <p>Loan Amount</p>
+                        </div>
+                        <div class="moneymoney">
+                            <input id="loan-amount-input" placeholder="Desired loan amount" type="text">
+                            <div class="moneymoneymoney">
+                                <div id="euro-exchange">€</div>
+                                <div id="gel-exchange">₾</div>
+                                <div id="dollar-exchange">$</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sesxisVada">
+                        <div>Loan Period</div>
+                        <div class="custom-select">
+                            <div class="select-selected">Select Year</div>
+                            <div class="select-items select-hide">
+                                <div class="loan-period">1</div>
+                                <div class="loan-period">2</div>
+                                <div class="loan-period">3</div>
+                                <div class="loan-period">4</div>
+                                <div class="loan-period">5</div>
+                                <div class="loan-period">6</div>
+                                <div class="loan-period">7</div>
+                                <div class="loan-period">8</div>
+                                <div class="loan-period">9</div>
+                                <div class="loan-period">10</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calcValuesPr">
+                <div class="calcValuesPr1">
+                    <p>Monthly Repayment</p>
+                    <h4 id="monthly-repayment-number">130.88 €</h4>
+                </div>
+                <div class="calcValuesPr2">
+                    <div class="gap-loan-amount">
+                        <p>Loan Amount</p>
+                        <h5 id="loan-amount-number">1500 €</h5>
+                    </div>
+                    <div class="gap-loan-amount">
+                        <p>Loan Period</p>
+                        <h5>1 YEAR</h5>
+                    </div>
+                </div>
+                <div class="calcValuesPr3">
+                    <div class="gap-loan-amount">
+                        <p class="px-width">Annual Interest</p>
+                        <h5 id="annual-interest" class="px-width">FROM 8.57%</h5>
+                    </div>
+                    <div class="gap-loan-amount">
+                        <p class="px-width">Effective interest rate</p>
+                        <h5 id="effective-interest" class="px-width">FROM 10.61%</h5>
+                    </div>
+                </div>
+
+                <div class="calcValuesbtn">
+                    <button id="calculate-loan">LEARN THE LIMIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="contact-section">
+  <div class="contact-main-div">
+    <p class="contact-us">CONTACT US</p>
+    <div class="contact-divs">
+      <div class="contact-div">
+        <img class="contact-img" src="./images/messenger.png" alt="">
+        <p class="chat-txt">Chat</p>
+        <p class="contact-us-24">Contact us 24/7</p>
+        <p class="open-chat">Open chat</p>
+      </div>
+
+      <div class="contact-div">
+        <img class="contact-img" src="./images/location-pin.png" alt="">
+        <p class="chat-txt">Branches</p>
+        <p class="contact-us-24">Book a visit in branch online</p>
+        <p class="open-chat">Locations</p>
+      </div>
+
+      <div class="contact-div">
+        <img class="contact-img" src="./images/telephone.png" alt="">
+        <p class="chat-txt">Contact info</p>
+        <p class="contact-us-24">(+995 32) 2 111 000</p>
+        <p class="open-chat">customerservice@bog.ge</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <footer>
+    <div>
+        <h3>Physical Person</h3>
+        <ul>
+            <li>Cards</li>
+            <li>Deposits</li>
+            <li>Loans</li>
+            <li>Mobile bank</li>
+            <li>Investments</li>
+            <li>Loyalty program</li>
+            <li>Premium service</li>
+            <li>Standard conditions</li>
+            <li>Official notices</li>
+            <li>Anonymous Report Whistleblowing</li>
+            <li>Security Center</li>
+            <li>Personal data protection policy</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Business</h3>
+        <ul>
+            <li>Accounts and cards</li>
+            <li>Deposits</li>
+            <li>Financing</li>
+            <li>Electronic bank</li>
+            <li>Accepting payments</li>
+            <li>Business services</li>
+        </ul>
+    </div>
+    
+    <div>
+        <h3>About the Bank</h3>
+        <ul>
+            <li>About us</li>
+            <li>Governance</li>
+            <li>Social responsibility</li>
+            <li>Career</li>
+            <li>Media center</li>
+            <li>News</li>
+            <li>Securities</li>
+            <li>Frequently Asked Questions</li>
+        </ul>
+    </div>
+
+    <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <ul>
+            <li>0322222222</li>
+            <li>Email@gmail.com</li>
+            <li>
+                <div class="icons-box">
+                    <span><ion-icon name="logo-facebook"></ion-icon></span>
+                    <span><ion-icon name="logo-youtube"></ion-icon></span>
+                    <span><ion-icon name="logo-instagram"></ion-icon></span>
+                    <span><ion-icon name="logo-linkedin"></ion-icon></span>
+                </div>
+            </li>
+        </ul>
+
+        <h3>Subscribe to News</h3>
+        <input type="text" placeholder="Email">
+        <button><ion-icon name="send-outline"></ion-icon></button>
+    </div>
+</footer> -->
+</div>
+
+
+    <div id="suggest-page">
+        <main>
+            <div class="main-banner">
+                <h1>Your Reliable Financial Supporter</h1>
+                <br>
+                <p>MLL Bank Has Been Combining Retail and Premium Banking Since 1905 and today it
+                    successfully serves more than 2,600,000 people</p>
+            </div>
+    
+            <section id="section">
+                <div class="services">
+                    <h1>Our Priority</h1>
+                    <div class="services-detail">
+                        <div>
+                            <span><ion-icon name="person-outline"></ion-icon></span>
+                            <h3>Users Interests</h3>
+                            <h4>One Of Our Main Concerns Is To Take Into Account The Interests Of Customers,
+                                Which We Provide With a Personal Approach. </h4>
+                        </div>
+                        <div>
+                            <span><ion-icon name="heart-outline"></ion-icon></span>
+                            <h3>Special Relationships</h3>
+                            <h4>Special Relationships With Customers Are Thanks To The Proffessionalism 
+                                Of Our Personal Bankers.</h4>
+                        </div>
+                        <div>
+                            <span><ion-icon name="hand-left-outline"></ion-icon></span>
+                            <h3>A Long-term Partnership</h3>
+                            <h4>As a Bank, Our Customers Acquire a Close Partner With Whom They Continue
+                                Successful Cooperation For Years.
+                            </h4>
+                        </div>
+                        <div>
+                            <span><ion-icon name="server-outline"></ion-icon></span>
+                            <h3>Innovative Products</h3>
+                            <h4>With Technological And Innovative Products, We Fully Adapt To The Wishes And Needs 
+                                Of Customers.</h4>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="products">
+                    <h1>Our Products</h1>
+                    <div class="our-products">
+                        <div class="img-info">
+                            <div class="img-div1"></div>
+                            <div>
+                                <h2>Banking Services</h2>
+                                <p>We Offer Privileged Banking Services That Combine Products And Services Tailored To You</p>
+                                <ul>
+                                    <li><ion-icon name="checkmark-done-outline"></ion-icon><h4>Deposits and Certificates</h4></li>
+                                    <li><ion-icon name="checkmark-done-outline"></ion-icon><h4>Multicurrency Accounts and Premium Class Cards</h4></li>
+                                    <li><ion-icon name="checkmark-done-outline"></ion-icon><h4>Remote Services (Including Email Banking)</h4></li>
+                                </ul>
+                                <button>See More</button>
+                            </div>
+                        </div>
+    
+                        <div class="img-info">
+                            
+                            <div>
+                                <h2>Investment Products</h2>
+                                <p>Our Diverse Selection Of Investment Products Will Give You The Opportunity To 
+                                    Make Profitable Investments and Earn Additional Income</p>
+    
+                                <ul>
+                                    <li><ion-icon name="checkmark-done-outline"></ion-icon><h4>Brokerage Service And/Or Investment Platform</h4></li>
+                                    <li><ion-icon name="checkmark-done-outline"></ion-icon><h4>Portfolio Structuring and Asset Management By Third Parties</h4></li>
+                                    <li><ion-icon name="checkmark-done-outline"></ion-icon><h4>Investing In Real Estate (Georgia),Regional Fixed Income</h4></li>
+                                </ul>
+                                
+                                <button>See More</button>
+                            </div>
+                            <div class="img-div2"></div>
+                        </div>
+    
+                        <div class="img-info">
+                            <div class="img-div3"></div>
+                            <div>
+                                <h2>Lifestyle</h2>
+                                <p>Along With Banking Services, You Will Also Be Able To Enjoy Lifestyle Benefits Created Exclusively 
+                                    For You</p>
+                                <ul>
+                                    <li><ion-icon name="checkmark-done-outline"></ion-icon><h4>International Concierge</h4></li>
+                                    <li><ion-icon name="checkmark-done-outline"></ion-icon><h4>Offers And Events Tailored To You</h4></li>
+                                    <li><ion-icon name="checkmark-done-outline"></ion-icon><h4>Travel Tours Around The World</h4></li>
+                                </ul>
+                                <button>See More</button>
+                            </div>
+                        </div>
+    
+    
+    
+                        <div class="take-part">
+                            <h1>Becoming A Member Of Wealth Management Is Easy</h1>
+                            <div class="steps">
+                                <div class="step">
+                                    <span>1</span>
+                                    <h3>Willingness to Cooperate</h3>
+                                    <h4>Express Your Desire To Manage Your Accumulated Wealth</h4>
+                                </div>
+                                <div class="step">
+                                    <span>2</span>
+                                    <h3>Contact</h3>
+                                    <h4>Leave Us Your Contact Information</h4>
+                                </div>
+                                <div class="step">
+                                    <span>3</span>
+                                    <h3>Interview With a Banker</h3>
+                                    <h4>Our Banker Will Contact You and Provide You With Services</h4>
+                                </div>
+                            </div>
+                        </div>
+    
+                        
+    
+                        <div class="banner">
+                            <h1>Your Reliable Financial Supporter</h1>
+                            <button>Become WM</button>
+                        </div>
+    
+    
+    
+                        <div class="news">
+                            <h1>Check Out The News</h1>
+                            <div class="news-section">
+                                <div class="card-holder">
+                                    
+                                    <div>
+                                        <img src="suggest-imgs/f1bcd696-e9e4-4744-aac5-13f5a11e7768.jpg" alt="">
+                                        <p>26 Jun. 2024</p>
+                                       
+                                        <h3>Global Private Banker named Bank of Georgia's accumulated
+                                        property management direction as the best in Georgia</h3>
+                                    </div>    
+                                    <h4>See More</h4>
+                                </div>
+    
+                                <div class="card-holder">
+                                    <div>
+                                        <img src="suggest-imgs/0cb48fec-2567-4b9b-a8f5-e81df02a4978.jpg" alt="">
+                                        <p>26 April 2024</p>
+                                        <h3>2 awards from Euromoney</h3>
+                                    </div>
+                                    <h4>See More</h4>
+                                    
+                                </div>
+    
+                                <div class="card-holder">
+                                    
+                                    <div>
+                                        <img src="suggest-imgs/5b83a10e-89c9-4cc7-b92c-7ce757469334.png" alt="">
+                                        <p>08 Apr. 2024</p>
+                                        <h3>Travel To The Cannes Film Festival With Mastercard</h3>
+                                    </div>
+                                    <h4>See More</h4>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="profile-page">
+        <section class="profile-section"> <!--THIS IS SECTION - width 100%-->
+            <div class="section-main-div"> <!--THIS IS SECTIONS CHILD DIV (WIDTH 1370PX; PADDING: 20PX)-->
+              <div class="left-side">
+                <div class="left-side-main-div">
+                  <div class="left-side-top-side-div"> <!--THIS IS PART OF PROFILE IMG, FULLNAME AND EMAILS MAIN DIV.-->
+                    <div class="upload-img-profile-icon">
+                      <div class="profile-icon-div"> 
+                        <img id="default-profile-picture" class="profile-icon" src="./profile-icon/man512.png" alt="profile-icon">
+                      </div>
+                      <label class="upload-label" for="profile-icon">Upload image</label>
+                      <input type="file" id="profile-icon" accept="image/jpeg, image/png" />
+                    </div>
+                    <p id="after-log-in-user-name" class="person-fullname">Anonymous Person</p>
+                    <p class="person-email">jwffa10111@gmail.com</p>
+                  </div>
+                  <div class="left-side-bottom-side-div">
+                    <p class="left-side-bottom-side-txt">Personal Information</p>
+                    <p class="left-side-bottom-side-txt">Order History</p>
+                  </div>
+                </div>
+              </div>
+        
+        
+              <div class="right-side">
+                <p class="personal-information-title">Personal Information</p>
+                <p class="personal-information-title-bottom">This is your personal information, 
+                  including name, email adress, where you can be contacted, date of birth
+                </p>
+        
+        
+                <div class="grid-for-personal-info-containers">
+        
+        
+                  <div class="personal-info-container">
+                    <div class="personal-info-container-item-flex">
+                      <p class="person-info-right-side-title">Name</p>
+                      <div class="icon-div">
+                        <img class="pers-info-icons" src="./person-details-icon/user.png" alt="user">
+                      </div>
+                    </div>
+                    <p id="after-login-username" class="personal-info-container-bottom-text">Anonymous Person</p>
+                  </div>
+        
+                  <div class="personal-info-container">
+                    <div class="personal-info-container-item-flex">
+                      <p class="person-info-right-side-title">Date of Birth</p>
+                      <div class="icon-div">
+                        <img class="pers-info-icons" src="./person-details-icon/calendar.png" alt="calendar">
+                      </div>
+                    </div>
+                    <p class="personal-info-container-bottom-text">05 March 2005</p>
+                  </div>
+        
+                  <div class="personal-info-container">
+                    <div class="personal-info-container-item-flex">
+                      <p class="person-info-right-side-title">Country, Region</p>
+                      <div class="icon-div">
+                        <img class="pers-info-icons" src="./person-details-icon/world.png" alt="world">
+                      </div>
+                    </div>
+                    <p class="personal-info-container-bottom-text">Georgia, Tbilisi</p>
+                  </div>
+        
+        
+                  <div class="personal-info-container">
+                    <div class="personal-info-container-item-flex">
+                      <p class="person-info-right-side-title">Contactable at</p>
+                      <div class="icon-div">
+                        <img class="pers-info-icons" src="./person-details-icon/contact.png" alt="contact">
+                      </div>
+                    </div>
+                    <p class="personal-info-container-bottom-text">jwffa10111@gmail.com</p>
+                  </div>
+
+                  <div class="personal-info-container">
+                    <div class="personal-info-container-item-flex">
+                      <p class="person-info-right-side-title">Balance</p>
+                      <div class="icon-div">
+                        <img class="pers-info-icons" src="./person-details-icon/profitability.png" alt="balance">
+                      </div>
+                    </div>
+                    <p id="person-balance-logIn" class="personal-info-container-bottom-text">0 GEL</p>
+                  </div>
+        
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+
+    <!-- <div id="currency-page">
+        <main>
+            <div class="cards">
+                <div class="card-exchange">
+                    <div class="cards-header"><span>$</span><h2>USD</h2><ion-icon name="bar-chart-outline"></ion-icon></div>
+                    
+                    <div class="definition">
+                        <p>Official Currency</p>
+                        <p class="bankcurrency">Bank Currency</p>
+                        <p></p>
+                    </div>
+                    <div class="buy-sell">
+                        <div></div>
+                        <div>
+                            <h4>buy</h4>
+                            <h4>sell</h4>
+                        </div>
+                    </div>
+                    <div class="currency-cost">
+                        <p>2.6935</p>
+                        <div>
+                            <p>2.640</p>
+                            <p>2.7400</p>
+                        </div>
+                        
+                    </div>
+                </div>
+    
+                <div class="card-exchange">
+                    <div class="cards-header"><span>€</span><h2>EURO</h2><ion-icon name="bar-chart-outline"></ion-icon></div>
+                    <div class="definition">
+                        <p>Official Currency</p>
+                        <p class="bankcurrency">Bank Currency</p>
+                        <p></p>
+                    </div>
+                    <div class="buy-sell">
+                        <div></div>
+                        <div>
+                            <h4>buy</h4>
+                            <h4>sell</h4>
+                        </div>
+                    </div>
+                    <div class="currency-cost">
+                        <p>2.9925</p>
+                        <div>
+                            <p>2.9130</p>
+                            <p>3.0460</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="card-exchange">
+                    <div class="cards-header"><span>£</span><h2>GBP</h2><ion-icon name="bar-chart-outline"></ion-icon></div>
+                    <div class="definition">
+                        <p>Official Currency</p>
+                        <p class="bankcurrency">Bank Currency</p>
+                        <p></p>
+                    </div>
+                    <div class="buy-sell">
+                        <div></div>
+                        <div>
+                            <h4>buy</h4>
+                            <h4>sell</h4>
+                        </div>
+                    </div>
+                    <div class="currency-cost">
+                        <p>3.5487</p>
+                        <div>
+                            <p>3.4470</p>
+                            <p>3.6100</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+            <section class="currency-calc">
+                <h1>Currency Calculator</h1>
+    
+                <div class="exchange">
+                    <div class="from">
+                        <div class="input-box">
+                            <input type="text" name="" id="convert">
+                            <label for="">From</label>
+                        </div>
+    
+                        <span class="valutes-box">
+                            <span>₾</span>
+                            <span>$</span>
+                            <span>€</span>
+                            <span>£</span>
+                        </span>
+    
+                    </div>
+                    <button><ion-icon name="swap-horizontal-outline"></ion-icon></button>
+                    <div class="to">
+    
+                        <div class="input-box"> 
+                            <input type="text" name="" id="converted">
+                            <label for="">To</label>
+                        </div>
+    
+    
+                        <span class="valutes-box2">
+                            <span>₾</span>
+                            <span>$</span>
+                            <span>€</span>
+                            <span>£</span>
+                        </span>
+    
+                    </div>
+                </div>
+                <button id="convertionBtn" onclick="currencyCalc()">conversion</button>
+                <i></i>
+            </section>
+        </main>
+    </div> -->
+
+    <div id="transaction-page">
+        <main>
+            <section class="transaction">
+                <h1 class="transaction-h1">Transaction</h1>
+    
+                <div class="transaction-div">
+                    <div class="buttons-box">
+                        <button id="by-account-name">By Account Name</button>
+                        <button>By Mobile Number</button>
+                        <button id="by-account-id">ID Number</button>
+                    </div>
+    
+                    <div class="input-img">
+                        <form class="input-box">
+                            <label id="where-edit" for="where">Where?</label>
+                            <div class="check-input-div">
+                                <input type="text" id="where">
+                                <button id="check">Check</button>
+                            </div>
+                            
+                            <label id="merab-edit-label" for="amount">How Many?</label>
+                            <input type="text" id="amount" placeholder="Amount">
+    
+                            <input type="text" id="destination" placeholder="Enter Destination">
+                            <button id="transferBtn">Transfer</button></div>
+                        </form>
+                        <!-- <div class="merab-editing"><img src="imgs/card-exchange.png" class="exchange-img"> -->
+                    </div>
+                </div>
+            </section>
+    
+    
+    
+
+        </main>
+    
+        <!-- <footer>
+            <div>
+                <h3>Physical Person</h3>
+                <ul>
+                    <li>Cards</li>
+                    <li>Deposits</li>
+                    <li>Loans</li>
+                    <li>Mobile bank</li>
+                    <li>Investments</li>
+                    <li>Loyalty program</li>
+                    <li>Premium service</li>
+                    <li>Standard conditions</li>
+                    <li>Official notices</li>
+                    <li>Anonymous Report Whistleblowing</li>
+                    <li>Security Center</li>
+                    <li>Personal data protection policy</li>
+                </ul>
+            </div>
+    
+            <div>
+                <h3>Business</h3>
+                <ul>
+                    <li>Accounts and cards</li>
+                    <li>Deposits</li>
+                    <li>Financing</li>
+                    <li>Electronic bank</li>
+                    <li>Accepting payments</li>
+                    <li>Business services</li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3>About the Bank</h3>
+                <ul>
+                    <li>About us</li>
+                    <li>Governance</li>
+                    <li>Social responsibility</li>
+                    <li>Career</li>
+                    <li>Media center</li>
+                    <li>News</li>
+                    <li>Securities</li>
+                    <li>Frequently Asked Questions</li>
+                </ul>
+            </div>
+    
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>0322222222</li>
+                    <li>Email@gmail.com</li>
+                    <li>
+                        <div class="icons-box">
+                            <span><ion-icon name="logo-facebook"></ion-icon></span>
+                            <span><ion-icon name="logo-youtube"></ion-icon></span>
+                            <span><ion-icon name="logo-instagram"></ion-icon></span>
+                            <span><ion-icon name="logo-linkedin"></ion-icon></span>
+                        </div>
+                    </li>
+                </ul>
+    
+                <h3>Subscribe to News</h3>
+                <input type="text" placeholder="Email">
+                <button><ion-icon name="send-outline"></ion-icon></button>
+            </div>
+        </footer> -->
+    
+    </div>
+    
+    <footer>
+        <div>
+            <h3>Physical Person</h3>
+            <ul>
+                <li>Cards</li>
+                <li>Deposits</li>
+                <li>Loans</li>
+                <li>Mobile bank</li>
+                <li>Investments</li>
+                <li>Loyalty program</li>
+                <li>Premium service</li>
+                <li>Standard conditions</li>
+                <li>Official notices</li>
+                <li>Anonymous Report Whistleblowing</li>
+                <li>Security Center</li>
+                <li>Personal data protection policy</li>
+            </ul>
+        </div>
+    
+        <div>
+            <h3>Business</h3>
+            <ul>
+                <li>Accounts and cards</li>
+                <li>Deposits</li>
+                <li>Financing</li>
+                <li>Electronic bank</li>
+                <li>Accepting payments</li>
+                <li>Business services</li>
+            </ul>
+        </div>
+        
+        <div>
+            <h3>About the Bank</h3>
+            <ul>
+                <li>About us</li>
+                <li>Governance</li>
+                <li>Social responsibility</li>
+                <li>Career</li>
+                <li>Media center</li>
+                <li>News</li>
+                <li>Securities</li>
+                <li>Frequently Asked Questions</li>
+            </ul>
+        </div>
+    
+        <div class="footer-contact">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>0322222222</li>
+                <li>Email@gmail.com</li>
+                <li>
+                    <div class="icons-box">
+                        <span><ion-icon name="logo-facebook"></ion-icon></span>
+                        <span><ion-icon name="logo-youtube"></ion-icon></span>
+                        <span><ion-icon name="logo-instagram"></ion-icon></span>
+                        <span><ion-icon name="logo-linkedin"></ion-icon></span>
+                    </div>
+                </li>
+            </ul>
+    
+            <h3>Subscribe to News</h3>
+            <input type="text" placeholder="Email">
+            <button><ion-icon name="send-outline"></ion-icon></button>
+        </div>
+    </footer>
+
+
+
+    <script>
+
+        
+
+    // ------------------------------------------NOT MY SHIT--------------------------------------------------------------------
+    document.querySelector('.select-selected').addEventListener('click', function() {
+        this.nextElementSibling.classList.toggle('select-hide');
+    });
+
+    document.querySelectorAll('.select-items div').forEach(function(item) {
+        item.addEventListener('click', function() {
+            var selected = this.parentNode.previousElementSibling;
+            selected.textContent = this.textContent;
+            selected.setAttribute('data-value', this.getAttribute('data-value'));
+            this.parentNode.classList.add('select-hide');
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.matches('.select-selected')) {
+            var dropdowns = document.querySelectorAll('.select-items');
+            dropdowns.forEach(function(dropdown) {
+                if (!dropdown.classList.contains('select-hide')) {
+                    dropdown.classList.add('select-hide');
+                }
+            });
+        }
+    });
+    // --------------------------------------------------------------------------------------------------------------
+    // phone.style.display = "None"
+    // const botButton = document.getElementById("ON/OFF")
+    // const phone = document.getElementById("silverPhone")
+    // botButton.addEventListener('click', () => {
+    //     phone.style.display = "None"
+    // })
+    // const open = () => {
+
+    // }
+
+
+    const botButton = document.getElementById("ON/OFF");
+    const phone = document.getElementById("silverPhone") ;  
+
+    let botIsClicked = false;
+
+    botButton.addEventListener('click', function() {
+        botIsClicked = !botIsClicked;
+        if (botIsClicked) {
+            phone.style.display = 'block';
+            botButton.style.display = 'none';
+        } else {
+            phone.style.display = 'none';
+            botButton.style.display === 'none';
+        }
+    });
+
+
+    // ------------------------------------BOT LOGIC--------------------------------------------------------------------------
+    const  but  = document.getElementById('send-btn')
+
+    document.getElementById('send-btn').addEventListener('click', function() {
+        const userInput = document.getElementById('user-input').value;
+        
+        if (userInput.trim() !== "") {
+            addMessage(userInput, 'user-message');
+            botResponse(userInput);
+            document.getElementById('user-input').value = ''; 
+        }
+    });
+
+    // enter
+    // document.querySelector('#txtSearch').addEventListener('keypress', function (e) {
+    //     if (e.key === 'Enter') {
+    //         but.click()
+    //     }
+    // });
+
+
+    function addMessage(text, className) {
+        const chatBox = document.getElementById('chat-box');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${className}`;
+        messageDiv.textContent = text;
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight; 
+
+    }
+
+    function botResponse(userInput) {
+        let botMessage = '';
+
+        if(userInput.toLowerCase() === "profile"){
+            botMessage = "Okay";
+            setInterval(() => {
+                profile.click();
+            }, 1500);
+            return ""
+        }
+        
+        if (userInput.toLowerCase().includes('hello')) {
+
+            botMessage = 'Hello! How can I help you today?';
+
+        } else if (userInput.toLowerCase().includes('price')) {
+            botMessage = 'Prices vary depending on the hotel. Can you specify which hotel?';
+        } else if (userInput === 'გამოსვლა'){
+            setTimeout(() => {
+                botButton.style.display = 'block'
+                phone.style.display = 'none';            
+            }, 500);
+            return "";
+
+        }
+
+        else {
+            botMessage = "I'm not sure how to respond to that.";
+        }
+
+        setTimeout(() => addMessage(botMessage, 'bot-message'), 500); 
+
+    }
+    function updateClock() {
+        const t = new Date();
+        let hours = t.getHours();
+        let minutes = t.getMinutes();
+        if (minutes < 10) {
+            minutes = '0' + minutes;
+        }
+        if (hours < 10) {
+            hours = '0' + hours;
+        }
+        document.getElementById("clock").value = `${hours}:${minutes}`;
+        document.getElementById("clock").style.color = "white";
+    }
+
+
+
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // --------------------------------------------------------------------------------------------------------------
+
+
+    const animBtns = document.getElementById("anim")
+
+    let slideIndex = 0;
+    let intervalId = null;
+
+    let slides = document.getElementsByClassName("firstSectionMainDivChild");
+    document.addEventListener("DOMContentLoaded", initializeSlider);
+
+    function initializeSlider(){
+        if(slides.length > 0){
+            slides[slideIndex].classList.add("displaySlide");
+            intervalId = setInterval(nextSlide, 5000);
+        }
+    }
+
+    function showSlide(index){
+        if(index >= slides.length){
+            slideIndex = 0;
+        }
+        else if(index < 0){
+            slideIndex = slides.length - 1;
+        }
+
+        for(let slide of slides){
+            slide.classList.remove("displaySlide")
+        }
+
+        slides[slideIndex].classList.add("displaySlide");
+    }
+
+    function prevSlide(){
+        clearInterval(intervalId);
+        slideIndex--;
+        showSlide(slideIndex);
+    }
+
+    function nextSlide(){
+        slideIndex++;
+        showSlide(slideIndex);
+    }
+
+
+
+
+    const euroExchange = document.getElementById("euro-exchange");
+    const gelExchange = document.getElementById("gel-exchange");
+    const dollarExchange = document.getElementById("dollar-exchange");
+
+    const loamAmountNumber = document.getElementById("loan-amount-number");
+    const repaymentNumber = document.getElementById("monthly-repayment-number");
+    const annualInterest = document.getElementById("annual-interest");
+    const effectiveInterest = document.getElementById("effective-interest");
+
+    const loanAmountInput = document.getElementById("loan-amount-input");
+    const loanPeriod = document.getElementsByClassName("loan-period");
+
+    const mortage = document.getElementById("mortage");
+    const consumer1 = document.getElementById("consumer");
+
+    consumer1.addEventListener("click", function(){
+        euroExchange.style.display = "none";
+        dollarExchange.style.display = "none";
+        repaymentNumber.innerHTML = "507.48 ₾";
+        loamAmountNumber.innerHTML = "1500 ₾";
+    });
+    mortage.addEventListener("click", function(){
+        euroExchange.style.display = "inline-block";
+        dollarExchange.style.display = "inline-block"
+        gelExchange.style.display = "inline-block";
+        repaymentNumber.innerHTML = "133.92 €";
+        loamAmountNumber.innerHTML = "1500 €";
+    });
+
+    let currencyNumber = 1;
+
+    gelExchange.addEventListener('click', function(){
+        loamAmountNumber.innerHTML = "1500 ₾";
+        repaymentNumber.innerHTML = "130.88 ₾";
+        annualInterest.innerHTML = "FROM 8.57%";
+        effectiveInterest.innerHTML = "FROM 10.61%";
+        currencyNumber = 2;
+    });
+    euroExchange.addEventListener('click', function(){
+        loamAmountNumber.innerHTML = "1500 €";
+        repaymentNumber.innerHTML = "133.92 €";
+        annualInterest.innerHTML = "FROM 12.92%";
+        effectiveInterest.innerHTML = "FROM 14.85%";
+        currencyNumber = 1;
+    });
+    dollarExchange.addEventListener('click', function(){
+        loamAmountNumber.innerHTML = "1500 $";
+        repaymentNumber.innerHTML = "132.21 $";
+        annualInterest.innerHTML = "FROM 10.48%";
+        effectiveInterest.innerHTML = "FROM 12.48%";
+        currencyNumber = 3;
+    });
+
+    let loanPeriodNumber = 0;
+
+    for(let i=0; i<loanPeriod.length; i++){
+        loanPeriod[i].addEventListener("click", function(){
+            loanPeriodNumber = i + 1;
+        })
+    }
+
+    const calculateLoan = document.getElementById("calculate-loan");
+    calculateLoan.addEventListener("click", function(){
+        if(currencyNumber === 1){
+            let number = Number(loanAmountInput.value) / (loanPeriodNumber * 12);
+            repaymentNumber.innerHTML = parseFloat(number + number * (13 / 100)).toFixed(2) + " €";
+        }
+        if(currencyNumber === 2){
+            let number = Number(loanAmountInput.value) / (loanPeriodNumber * 12);
+            repaymentNumber.innerHTML = parseFloat(number + number * (9 / 100)).toFixed(2) + " ₾";
+        }
+        if(currencyNumber === 3){
+            let number = Number(loanAmountInput.value) / (loanPeriodNumber * 12);
+            repaymentNumber.innerHTML = parseFloat(number + number * (12 / 100)).toFixed(2) + " ₾";
+        }
+    })
+
+
+    let loanSection=document.getElementsByClassName("loan")[0]
+let consumerLoan=document.getElementsByClassName("choice-consumer-loan")[0]
+let onlineInstal=document.getElementsByClassName("choice-online-installments")[0]
+
+let choice=document.getElementsByClassName("choice")[0]
+
+function consumer(){
+    choice.style.display="none"
+    consumerLoan.style.display="flex"
+
+}
+function installment(){
+    choice.style.display="none"
+    onlineInstal.style.display="block"
+}
+
+
+
+
+//  currency covertion
+
+let valutesBox=document.getElementsByClassName("valutes-box")[0]
+let valutesBox2=document.getElementsByClassName("valutes-box2")[0]
+// for(let char of valutesBox.querySelectorAll("span")){
+//     char.addEventListener("click", function(){
+//         for(let e of valutesBox.querySelectorAll("span")){
+//             e.style.background="none"
+//             e.style.color="white"
+//         }
+//         if(char.style.backgroundColor!="white"){
+//             char.style.backgroundColor="white"
+//             char.style.color="#18204B"
+//             return
+//         }if(char.style.backgroundColor=="white"){
+//             char.style.background="none"
+//             char.style.color="white"
+
+//         }
+//     })
+// }
+// for(let char of valutesBox2.querySelectorAll("span")){
+//     char.addEventListener("click", function(){
+//         for(let e of valutesBox2.querySelectorAll("span")){
+//             e.style.background="none"
+//             e.style.color="white"
+//         }
+//         if(char.style.backgroundColor!="white"){
+//             char.style.backgroundColor="white"
+//             char.style.color="#18204B"
+//             return
+//         }if(char.style.backgroundColor=="white"){
+//             char.style.background="none"
+//             char.style.color="white"
+
+//         }
+//     })
+// }
+
+
+function currencyCalc(){
+    const from=document.getElementById("convert").value
+    const to=document.getElementById("converted")
+    
+    const currencyObj={
+        "₾" :{
+            "₾" : "1",
+            "$" : "0.37",
+            "€" : "0.36",
+            "£" : "0.277"
+        },
+        "$" :{
+            "₾" : "2.66",
+            "$" : "1",
+            "€" : "0.87",
+            "£" : "0.73"
+        },
+        "€" :{
+            "₾" : "2.91",
+            "$" : "1.06",
+            "€" : "1",
+            "£" : "0.8"
+        },
+        "£" :{
+            "₾" : "3.45",
+            "$" : "1.26",
+            "€" : "1.13",
+            "£" : "1"
+        }
+    }
+
+    for(let char of valutesBox.querySelectorAll("span")){
+        if(char.style.backgroundColor=="white"){
+            const firstValute=char.textContent
+            console.log(firstValute)
+            for(let e of valutesBox2.querySelectorAll("span")){
+                if(e.style.backgroundColor=="white"){
+                    const secondValute=e.textContent
+                    console.log(secondValute)
+                    const result = parseFloat(from) * parseFloat(currencyObj[firstValute][secondValute])
+                    console.log(result)
+                    to.value=result
+                }
+
+            }
+
+        }
+    }
+
+
+
+    
+    // const finalConvert = parseFloat(from) * currencyObj[firstValute][secondValute]
+}
+
+
+const profilePicture = document.getElementById("default-profile-picture");
+const inputPicture = document.getElementById("profile-icon");
+inputPicture.addEventListener("change", () => {
+  profilePicture.src = URL.createObjectURL(inputPicture.files[0]);
+});
+
+
+    const suggest = document.getElementById("suggest-page-href");
+    const transact = document.getElementById("transaction-page-href");
+    const home = document.getElementById("home-page-href");
+    const profile = document.getElementById("profile-page-href");
+
+
+    const homePage = document.getElementById("home-page");
+    const suggestPage = document.getElementById("suggest-page");
+    const profilePage = document.getElementById("profile-page");
+    const currencyPage = document.getElementById("currency-page");
+    const transactionPage = document.getElementById("transaction-page");
+
+    const link = document.getElementById('stylesheet');
+    const script = document.getElementById("script");
+
+
+    suggest.addEventListener("click", function(){
+        suggestPage.style.display = "block";
+        homePage.style.display = "none";
+        profilePage.style.display = "none";
+        transactionPage.style.display = "none";
+        link.href = "suggest.css";
+        console.log(link.href);
+    });
+    transact.addEventListener("click", function(){
+        transactionPage.style.display = "flex";
+        homePage.style.display = "none";
+        profilePage.style.display = "none";
+        suggestPage.style.display = "none";
+        link.href = "transaction.css";
+        // script.src = "transact.js";
+        console.log(link.href);
+    });
+    home.addEventListener("click", function(){
+        homePage.style.display = "block";
+        transactionPage.style.display = "none";
+        profilePage.style.display = "none";
+        suggestPage.style.display = "none";
+        link.href = "style.css";
+        // script.src = "script.js";
+        console.log(link.href);
+    });
+    profile.addEventListener("click", function(){
+        profilePage.style.display = "block";
+        transactionPage.style.display = "none";
+        homePage.style.display = "none";
+        suggestPage.style.display = "none";
+        link.href = "profile.css";
+        console.log(link.href);
+    });
+
+        const signIn = document.getElementById("sign-in");
+        const signUp = document.getElementById("sign-up");
+        const formDisplay = document.getElementById("form-catcher");
+        const signDiv = document.getElementsByClassName("sign-div");
+    
+        let formIsClicked = false;
+        let formIsClicked1 = false;
+    
+        signUp.addEventListener('click', function(){
+            formIsClicked = !formIsClicked;
+            if(formIsClicked){
+                formDisplay.style.display = "flex";
+                setTimeout(() => {
+                    formDisplay.classList.add("display");
+                }, 10);
+            }else{
+                formDisplay.classList.remove("display");
+                setTimeout(() => {
+                    formDisplay.style.display = "none";
+                }, 500);
+            }
+        })
+    
+    
+    
+        const logInForm = document.getElementById("log-form");
+        signIn.addEventListener("click", function(){
+            formIsClicked1 = !formIsClicked1;
+            if(formIsClicked1){
+                logInForm.style.display = "flex";
+                setTimeout(() => {
+                    logInForm.classList.add("display1");
+                }, 10);
+            }else{
+                logInForm.classList.remove("display1");
+                setTimeout(() => {
+                    logInForm.style.display = "none";
+                }, 500);
+            }
+        });
+    
+        const likaMenu = document.getElementById("lika-menu");
+        const hrefs = document.getElementById("hrefs-display");
+        let likaMenuClick = false;
+    
+        likaMenu.addEventListener("click", function(){
+            likaMenuClick = !likaMenuClick;
+            if(likaMenuClick){
+                hrefs.style.display = "flex";
+            }else{
+                hrefs.style.display = "none"
+            }
+        });
+    
+    
+        let regForm=document.getElementsByClassName("reg-form")[0]
+        let regID=document.getElementById("ID")
+        let regName=document.getElementById("RegUserName")
+        let regPass=document.getElementById("RegUserPass")
+    
+        let logForm=document.getElementsByClassName("log-form")[0]
+        let logName=document.getElementById("LogUserName")
+        let logPass=document.getElementById("LogUserPass")
+    
+    
+        let regBtn=document.getElementById("reg-finish")
+        let logBtn=document.getElementById("log-finish")
+    
+        const personUsername = document.getElementById("person-user-name-div");
+        const personUsernameInner = document.getElementById("person-username");
+
+
+        const byAccountName = document.getElementById("by-account-name");
+        const byAccountId = document.getElementById("by-account-id");
+        const checkButton = document.getElementById("check");
+        const amountInp = document.getElementById("amount");
+        const destination = document.getElementById("destination");
+        const transferButton = document.getElementById("transferBtn");
+
+        const form = document.querySelector("input-box");
+
+        const transactionInput = document.getElementById("where");
+        console.log(transactionInput);
+
+        let nameOrId = false; // if this variable is equal to true, then transaction will happen with ID Number
+
+        byAccountId.addEventListener("click", function(){
+            nameOrId = true;
+        })
+        byAccountName.addEventListener("click", function(){
+            nameOrId = false;
+        });
+        const personBalance = document.getElementById("person-balance-logIn");
+        let accountArray = [];
+
+        class Accounts{
+            constructor(userName, userId, userPass, balance){
+                transferButton.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    this.transact(amountInp.value, event);
+                })
+                this.userName = userName;
+                this.userId = userId;
+                this.userPass = userPass;
+                this.balance = balance;
+            }
+
+            transact(amount, e){
+                if(nameOrId === false){
+                    for(let account of accountArray){
+                        if(account.userName === transactionInput.value){
+                            account.balance += Number(amount);
+                            this.balance -= amount
+                            if(personUsernameInner.innerHTML !== account.userName){
+                                personBalance.innerHTML = this.balance + " GEL";
+                            }
+                            console.log(accountArray);
+                            return this.balance;
+                        }
+                    }
+                }
+            }
+            
+    
+        }
+    
+        regBtn.addEventListener("click", function(){
+            if(regID.value !="" && regName.value!="" && regPass.value!=""){
+                const newAccount = new Accounts(regName.value, regID.value, regPass.value, 2000);
+                accountArray.push(newAccount);
+                console.log(accountArray)
+                regName.value = "";
+                regID.value = "";
+                regPass.value = "";
+            }else{
+                for(let inp of document.querySelectorAll("input")){
+                    if(inp.value===""){
+                        inp.nextElementSibling.textContent="Fill it"
+                        inp.nextElementSibling.style.color="red"
+                    }
+                }
+            }
+        })
+        const afterLogInName = document.getElementById("after-log-in-user-name");
+        const logButton = document.getElementById("log-finish");
+
+        const displayInfo = document.getElementById("after-login-username");
+
+        logButton.addEventListener("click", function(e){
+            e.preventDefault();
+            for(let account of accountArray){
+                if(logName.value === account.userName && logPass.value === account.userPass){
+                    personUsername.style.display = "block";
+                    personUsernameInner.innerHTML = account.userName
+                    afterLogInName.innerHTML = account.userName;
+                    personBalance.innerHTML = account.balance + " GEL";
+                    displayInfo.innerHTML = account.userName
+                    logName.value = "";
+                    logPass.value = "";
+                    signDiv[0].style.display = "none";
+                    logInForm.style.display = "none";
+                    formIsClicked1 = false;
+                }
+                if(personUsernameInner.innerHTML === account.userName){
+                    personBalance.innerHTML = account.balance + " GEL";
+                }
+            }
+        })
+
+        
+        const logOut = document.getElementById("log-out");
+        logOut.addEventListener("click", function(){
+            personUsernameInner.innerHTML = "";
+            personUsername.style.display = "none";
+            signDiv[0].style.display = "flex";
+            signDiv[0].style.flexDirection = "column";
+            signDiv[0].style.gap = "3px";
+        })
+
+
+
+        
+
+
+    
+    </script>
+
+    <script id="script" src="./script.js"></script>
+
+</body>
+</html>

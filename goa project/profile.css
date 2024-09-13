@@ -1,0 +1,430 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.629);
+  font-family: "Work Sans", sans-serif;
+  text-decoration: none;
+}
+
+body{
+  background: linear-gradient(90deg, #02050C 6%, #18204B 100%);
+}
+#hrefs-display{
+  display: flex;
+  gap: 20px;
+  position: static;
+}
+.profile-section{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+  margin-bottom: 250px;
+}
+
+header{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+nav{
+  width: 1370px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profile-sign-in-up-div{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.profile-icon-header-div{
+  max-width: 45px;
+}
+.profile-icon-header-img{
+  width: 100%;
+}
+.hrefs-div{
+  display: flex;
+  gap: 15px;
+}
+.hrefs{
+  font-size: 18px;
+}
+.logo{
+  font-size: 2rem;
+  background-color: #0d1229;
+  padding: 5px 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.597);
+}
+
+#sign-in, #sign-up{
+  font-size: 14px;
+}
+.sign-div{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#lika-menu{
+  display: none;
+  width: 65px;
+}
+
+@media (max-width: 1000px){
+  .hrefs{
+    display: none;
+  }
+  #lika-menu{
+    display: block;
+  }
+  #hrefs-display{
+    display: none;
+    position: absolute;
+    top: 180px;
+    right: 25%;
+}
+}
+@media (max-width: 650px){
+  #hrefs-display{
+      display: none;
+      position: absolute;
+      top: 180px;
+      right: 14%;
+  }
+}
+@media (max-width: 450px){
+  #hrefs-display{
+      display: none;
+      position: absolute;
+      top: 180px;
+      right: 3%;
+  }
+}
+footer {
+  border-top: 1px solid rgba(252, 247, 247, 0.584);
+  border-bottom: 1px solid rgba(251, 251, 251, 0.584);
+  width: 1370px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 20px;
+  margin-bottom: 30px;
+  margin: auto;
+  padding-top: 80px;
+  margin-top: 100px;
+}
+footer ul{
+  opacity: 0.7;
+  margin-top: 15px;
+  line-height: 1.4rem;
+  cursor: pointer;
+}
+
+.footer-contact ul{
+  list-style: none;
+}
+
+.icons-box{
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.icons-box span{
+  width: 40px;
+  height: 40px;
+  background-color: rgb(168, 158, 177);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.footer-contact h3{
+  margin-top: 40px;
+  font-size: 23px;
+}
+.footer-contact input{
+  margin-top: 15px;
+  width: 210px;
+  height: 36px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(168, 158, 177, 0.363);
+}
+.footer-contact {
+  position: relative;
+}
+.footer-contact button{
+  width: 40px;
+  height: 30px;
+  font-size: 24px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: none;
+  background: none;
+  color: #FFFFFF;
+}
+
+
+/*START STYLING OF SECTIONS CHILD DIV*/
+
+.section-main-div{
+  width: 1370px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 100px;
+  border-top: 1px solid rgba(255, 255, 255, 0.585);
+}
+
+/*END OF SECTIONS CHILD DIV STYLING*/
+
+
+
+/*---------------------------------------------*/
+
+
+/*START STYLING OF PROFILE PICTURE*/
+
+.profile-icon-div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.621);
+  box-shadow: 1px 1px 25px rgba(255, 255, 255, 0.461);
+  overflow: hidden;
+  padding: 5px;
+}
+.profile-icon{
+  width: 100%;
+  border-radius: 50%;
+  height: 100%;
+  object-fit:cover;
+}
+#default-profile-picture{
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+/*END OF PROFILE PICTURE STYLING*/
+
+
+/* -------------------------------------------- */
+
+
+/* THIS IS START OF LEFT SIDE STYLING */
+
+.left-side-main-div{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.left-side-top-side-div{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.person-fullname{
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.631);
+  font-size: 2.1rem;
+}
+.person-email{
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.579);
+  font-size: 1.2rem;
+}
+
+.left-side-bottom-side-txt{
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.591);
+  font-size: 2.1rem;
+  cursor: pointer;
+}
+.left-side-bottom-side-div{
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.upload-img-profile-icon{
+  display: flex;
+  align-items: center;
+}
+.upload-label{
+  align-self: flex-end;
+  color: rgba(255, 255, 255, 0.775);
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 14px;
+  position: relative;
+  right: 15px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.709);
+  border-radius: 8px;
+}
+#profile-icon{
+  display: none;
+}
+
+
+/* -------------------------------------------------- */
+
+/* THIS IS START OF STYLING RIGHT SIDE  */
+
+
+.right-side{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  
+}
+.icon-div{
+  max-width: 30px;
+}
+.pers-info-icons{
+  width: 100%;
+}
+.personal-information-title{
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.608);
+  font-size: 2.1rem;
+}
+.personal-information-title-bottom{
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.622);
+  font-size: 1.1rem;
+  max-width: 800px;
+}
+
+.personal-info-container{
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.579);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.461);
+}
+.personal-info-container-item-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.person-info-right-side-title{
+  color: rgba(255, 255, 255, 0.577);
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+.personal-info-container-bottom-text{
+  color: rgba(255, 255, 255, 0.655);
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+.grid-for-personal-info-containers{
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  gap: 35px;
+  margin-top: 60px;
+  align-items: center;
+}
+
+/* THIS IS END OF RIGHT SIDE STYLING */
+
+
+
+
+@media (max-width: 1380px){
+  .section-main-div{
+    width: 90%;
+  }
+  footer{
+    width: 90%;
+    flex-wrap: wrap;
+  }
+  .section-main-div{
+    gap: 40px;
+  }
+  .left-side-bottom-side-txt{
+    font-size: 1.5rem;
+  }
+  .person-fullname{
+    font-size: 1.6rem;
+    margin-top: 10px;
+  }
+  .upload-img-profile-icon{
+    flex-direction: column;
+  }
+  .upload-label{
+    align-self: flex-start;
+    color: rgba(255, 255, 255, 0.775);
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.709);
+    border-radius: 8px;
+    left: 0;
+    top: 25px;
+  }
+}
+
+@media (max-width: 800px){
+  .personal-information-title{
+    font-size: 1.7rem;
+  }
+  .personal-information-title-bottom{
+    font-size: 1.2rem;
+  }
+  .section-main-div{
+    flex-direction: column;
+  }
+  .logo{
+    font-size: 1.3rem;
+  }
+  .profile-section{
+    margin-top: 70px;
+  }
+}
